@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Selector</title>
+    <style>
+        /* Basic styling for form */
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        select {
+            width: 200px;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Country Selector</h2>
+    <form id="countryForm">
+        <div>
+            <label for="continentSelect">Select Continent:</label>
+            <select id="continentSelect" onchange="loadCountries()">
+                <option value="">Select a continent</option>
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Africa">Africa</option>
+                <option value="North America">North America</option>
+                <option value="South America">South America</option>
+                <option value="Australia">Australia</option>
+            </select>
+        </div>
+    </form>
+
+    <div id="countryList">
+        <!-- Country options will be dynamically loaded here -->
+    </div>
+
+    <script>
+        function loadCountries() {
+            var continent = document.getElementById("continentSelect").value;
+            var countries = getCountriesByContinent(continent);
+
+            var countryList = document.getElementById("countryList");
+            countryList.innerHTML = "";
+
+            if (countries.length > 0) {
+                var selectHtml = '<label for="countrySelect">Select Country:</label>';
+                selectHtml += '<select id="countrySelect">';
+                selectHtml += '<option value="">Select a country</option>';
+
+                for (var i = 0; i < countries.length; i++) {
+                    selectHtml += '<option value="' + countries[i] + '">' + countries[i] + '</option>';
+                }
+
+                selectHtml += '</select>';
+
+                countryList.innerHTML = selectHtml;
+            } else {
+                countryList.innerHTML = "<p>No countries found for this continent.</p>";
+            }
+        }
+
+        function getCountriesByContinent(continent) {
+            // This is a simplified example with static data, in a real scenario you would use an API
+            var countryData = {
+                "Asia": ["China", "India", "Japan", "South Korea"],
+                "Europe": ["France", "Germany", "Italy", "Spain", "United Kingdom"],
+                "Africa": ["Nigeria", "South Africa", "Egypt", "Kenya"],
+                "North America": ["United States", "Canada", "Mexico"],
+                "South America": ["Brazil", "Argentina", "Colombia", "Chile"],
+                "Australia": ["Australia", "New Zealand"]
+            };
+
+            return countryData[continent] || [];
+        }
+    </script>
+</body>
+
+</html>

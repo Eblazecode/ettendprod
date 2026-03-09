@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Dashboard Attendance{% endblock %}
+
+{% block content %}
+
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>STUDENTS MASS ATTENDANCE</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="container mt-5">
+                                    <h2 class="text-center">Attendance  Records for {{ level }}-Level Students</h2>
+
+                                    {% if error %}
+                                        <div class="alert alert-danger text-center" role="alert">
+                                            {{ error }}
+                                        </div>
+                                    {% endif %}
+
+                                    {% if student_event_attendance  %}
+                                    <div class="table-responsive">
+                                        <table class=" col-lg-12 table w-100 table-bordered table-striped table-hover" id="tableExport">
+                                            <thead class="thead-dark">
+                                                <tr>
+                                                    <th>SN</th>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Matric No</th>
+                                                    <th>Gender</th>
+                                                    <th>Level</th>
+                                                    <th>Department</th>
+                                                    <th>Faculty</th>
+                                                        <th>Week 1</th>
+                                                        <th>Week 2</th>
+                                                    <th>Week 3</th>
+                                                    <th>Week 4</th>
+                                                    <th>Week 5</th>
+                                                    <th>Week 6</th>
+                                                    <th>Week 7</th>
+                                                    <th>Week 8</th>
+                                                    <th>Week 9</th>
+                                                    <th>Week 10</th>
+                                                    <th>Week 11</th>
+                                                    <th>Week 12</th>
+                                                    <th>Total Attendance Score (%)</th>
+                                                    <th>Remarks</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for student in student_event_attendance %}
+                                                <tr>
+                                                    <td>{{ forloop.counter }}</td>
+                                                    <td>{{ student.student_fname }}</td>
+                                                    <td>{{ student.student_lname }}</td>
+                                                    <td>{{ student.student_matric_no }}</td>
+                                                    <td>{{ student.student_gender }}</td>
+                                                    <td>{{ student.student_level }}</td>
+                                                    <td>{{ student.department }}</td>
+                                                    <td>{{ student.faculty }}</td>
+
+                                                        <td>{{ student.week_1}}</td>
+                                                 <td>{{ student.week_2}}</td>
+                                                <td>{{ student.week_3}}</td>
+                                                <td>{{ student.week_4}}</td>
+                                                <td>{{ student.week_5}}</td>
+                                                <td>{{ student.week_6}}</td>
+                                                <td>{{ student.week_7}}</td>
+                                                <td>{{ student.week_8}}</td>
+                                                <td>{{ student.week_9}}</td>
+                                                <td>{{ student.week_10}}</td>
+                                                <td>{{ student.week_11}}</td>
+                                                <td>{{ student.week_12}}</td>
+
+                                                    <td>
+                                                        {{ student.student_total_attendance_score|floatformat:2 }}%
+                                                    </td>
+                                                    <td>
+                                                        {% if student.student_total_attendance_score >= 75 %} Excellent
+                                                        {% elif student.student_total_attendance_score >= 50 %} Fair
+                                                        {% else %} Poor
+                                                        {% endif %}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {% else %}
+                                    <div class="alert alert-info text-center" role="alert">
+                                        No student records available.
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

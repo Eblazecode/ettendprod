@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+    <title>Admin login</title>
+    <!-- General CSS Files -->
+
+
+    <link rel="stylesheet" href="{% static 'assets/bundles/bootstrap-social/bootstrap-social.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'assets/bundles/fontawesome/css/all.css'%}">
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href=" {% static 'assets/css/app.min.css' %}">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/components.css'%}">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}">
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+
+</head>
+
+<body>
+<div class="loader"></div>
+<div id="app">
+    <section class="section">
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12 col-md-10 offset-lg-2 col-lg-6">
+                    <a href="index.html">
+                        <img alt="image" src="{% static 'img/ettendlogo2.png' %}" class="header-logo offset-lg-4" style="width: 100px;" />
+                        <img alt="image" src="{% static 'assets/img/logo.png' %}" class="header-logo offset-lg-4" style="width: 70px;" />
+                    </a>
+                    <div class="login-brand">
+                        E-TTEND attendance system
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-10 col-lg-5 pb-20">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h4>Admin Login</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-info alert-dismissible show fade">
+                                <div class="alert-body">
+                                    <button class="close" data-dismiss="alert">
+                                        <span>&times;</span>
+                                    </button>
+                                    {% if messages %}
+                                    <ul>
+                                        {% for message in messages %}
+                                        <li>{{ message }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label for="Admin Email">EMAIL</label>
+                                        <input type="email" name="admin_email" class="form-control" id="id_admin_email" placeholder="email@domain" required>
+                                        {% for error in form.admin_email.errors %}
+                                        <div class="invalid-feedback">{{ error }}</div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-lg-12">
+                                        <label for="Admin Password">PASSWORD</label>
+                                        <input type="password" name="admin_password" class="form-control" id="id_admin_password" placeholder="Password" required>
+                                        {% for error in form.admin_password.errors %}
+                                        <div class="alert alert-warning alert-dismissible show fade">
+                                            <div class="alert-body">
+                                                <button class="close" data-dismiss="alert">
+                                                    <span>&times;</span>
+                                                </button>
+                                                {{ error }}
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-lg col-md-6 btn-block">Login</button>
+                                </div>
+                            </form>
+                            <div class="mb-4 text-muted text-center p-b-20">
+                                Not Registered? <a href="{% url 'admin_register' %}">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-12 col-lg-7 p-0">
+                    <div class="card">
+                        <div class="card-body">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="{% static 'img/blackstud.jpg' %}" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{% static 'img/gradduates.jpg' %}" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="{% static 'img/classserious.jpg' %}" alt="Third slide">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="simple-footer">
+            Copyright &copy; E-TTEND INNOVATION LABS
+        </div>
+    </section>
+</div>
+
+
+    <!-- General JS Scripts -->
+    <script src="{% static 'assets/js/app.min.js' %} "></script>
+    <!-- JS Libraies -->
+    <script src="{% static 'assets/bundles/apexcharts/apexcharts.min.js' %} "></script>
+    <!-- Page Specific JS File -->
+    <script src="{% static 'assets/js/page/index.js' %} "></script>
+    <!-- Template JS File -->
+    <script src="{% static 'assets/js/scripts.js' %} "></script>
+    <!-- Custom JS File -->
+    <script src="{% static ' assets/js/custom.js' %} "></script>
+</body>
+
+
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
+
+</html>

@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Django stuff
+*.log
+db.sqlite3
+media/
+
+# Static files (optional if you generate them during deploy)
+staticfiles/
+
+# Environment variables
+.env
+
+# IDE files
+.idea/
+.vscode/
+
+# Mac files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# PyCharm project files
+*.iml
+
+# Migrations (optional if needed)
+# */migrations/*
+# !*/migrations/__init__.py
+DAP/
+*.csv

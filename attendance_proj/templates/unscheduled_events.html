@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Dashboard Attendance{% endblock %}
+
+{% block content %}
+<!-- Main Content -->
+
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12 col-sm-5 col-lg-3">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" width="100px">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-7 col-lg-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>STAFF EVENTS</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 col-sm-12 col-md-4">
+                                    <ul class="nav nav-pills flex-column" id="myTab4" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="home-tab4" data-toggle="tab" href="#home4"
+                                               role="tab" aria-controls="home" aria-selected="true">Brief</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="profile-tab4" data-toggle="tab" href="#profile4"
+                                               role="tab" aria-controls="profile" aria-selected="false">Upload</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="contact-tab4" data-toggle="tab" href="#contact4"
+                                               role="tab" aria-controls="contact" aria-selected="false">Verify</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-8">
+                                    <div class="tab-content no-padding" id="myTab2Content">
+
+                                        <!-- Brief -->
+                                        <div class="tab-pane fade show active" id="home4" role="tabpanel"
+                                             aria-labelledby="home-tab4">
+                                            <p>
+                                                Upload and manage staff conference attendance records here.
+                                                You can import CSV files containing staff details and track attendance.
+                                            </p>
+                                        </div>
+
+                                        <!-- Upload -->
+                                        <div class="tab-pane fade" id="profile4" role="tabpanel"
+                                             aria-labelledby="profile-tab4">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="card">
+                                                        <div class="card-header">
+                                                            <h4>STAFF CONFERENCE DATA UPLOAD</h4>
+                                                        </div>
+                                                        <div class="card-body">
+
+                                                            {% if messages %}
+                                                                {% for message in messages %}
+                                                                    <div class="alert alert-{{ message.tags }} alert-has-icon">
+                                                                        <div class="alert-icon"><i class="far fa-lightbulb"></i></div>
+                                                                        <div class="alert-body">
+                                                                            <div class="alert-title">{{ message.tags|title }}</div>
+                                                                            {{ message }}
+                                                                        </div>
+                                                                    </div>
+                                                                {% endfor %}
+                                                            {% endif %}
+
+                                                            <form action="{% url 'upload_staff_conference' %}" method="post"
+                                                                  enctype="multipart/form-data" class="dropzone" id="conferenceDropzone">
+                                                                {% csrf_token %}
+                                                                <div class="fallback">
+                                                                    <input name="file" type="file" required />
+                                                                </div>
+                                                                <button class="btn mt-3 btn-primary" type="submit">Upload CSV</button>
+                                                            </form>
+
+                                                            <p class="mt-2 text-muted">
+                                                                <strong>Note:</strong> CSV file must contain the columns:<br>
+                                                                <code>First Name, Last Name, Staff ID, Gender, Department, Faculty</code>
+                                                            </p>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Verify -->
+                                        <div class="tab-pane fade" id="contact4" role="tabpanel"
+                                             aria-labelledby="contact-tab4">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h4>Captured Conference Records</h4>
+                                                </div>
+                                                <div class="card-body">
+                                                    <a href="{% url 'view_upload_staff_conference' %}" class="btn btn-primary">View Records</a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Sidebar -->
+    <div class="settingSidebar">
+        <a href="javascript:void(0)" class="settingPanelToggle"><i class="fa fa-spin fa-cog"></i></a>
+        <div class="settingSidebar-body ps-container ps-theme-default">
+            <div class="fade show active">
+                <div class="setting-panel-header">Setting Panel</div>
+                <!-- ... (rest of your settings sidebar unchanged) ... -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

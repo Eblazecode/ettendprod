@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body text-center">
+
+                    <div class="card-body">
+                        <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" width="100px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4>VERITAS UNIVERSITY, ABUJA</h4>
+                    <h4>STAFF ATTENDANCE REPORT</h4>
+                      <h4>  {{ event_title }}  </h4>
+                    <h4>DATE: {{ event_date }} </h4>
+                    <h4> WEEK {{ week }} </h4>
+                    <h4> <img src="{{ qr_code }}" alt="QR Code" style="width: 200px; height: 200px;"></h4>
+                </div>
+            </div>
+        </div>
+     <div class="col-12 col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4> </h4>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>{% endblock title %}
+
+{% block content %}
+
+<!-- Print-specific CSS -->
+
+<style>
+@media print {
+    .no-print { display: none !important; }
+    .main-content { width: 100%; visibility: visible; position: absolute; top: 0; left: 0; }
+    @page { margin: 0; }
+    body { margin: 1cm; }
+}
+</style>
+
+<!-- Main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <div class="container mt-5">
+                                    <table class="col-lg-12 table w-100 table-bordered table-striped table-hover" id="tableExport">
+
+                                        {% if staff_event_attendance %}
+
+            <thead class="thead-dark">
+                <tr>
+                    <th> SN </th>
+                    <th>Title</th>
+                    <th>Staff ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Department</th>
+                    <th>Faculty</th>
+                    <th>Gender</th>
+                    <th>Category</th>
+                    <th>Week Score</th>
+                    <th>Total Attendance Score</th>
+                    <th>Remark</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_event_attendance %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ staff.staff_title|default:"N/A" }}</td>
+                    <td>{{ staff.staff_id|default:"N/A" }}</td>
+                    <td>{{ staff.staff_fname|default:"N/A" }}</td>
+                    <td>{{ staff.staff_lname|default:"N/A" }}</td>
+                    <td>{{ staff.department|default:"N/A" }}</td>
+                    <td>{{ staff.faculty|default:"N/A" }}</td>
+                    <td>{{ staff.staff_gender|default:"N/A" }}</td>
+                    <td>{{ staff.staff_category|default:"N/A" }}</td>
+                    <td>{{ staff.week_score|default:0 }}</td>
+                    <td>{{ staff.staff_total_attendance_score|default:"N/A" }}</td>
+                    <td class="text-danger"><strong>{{ staff.remark|default:"Absent" }}</strong></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-warning text-center">
+        No absenteeism records found for this event.
+    </div>
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+

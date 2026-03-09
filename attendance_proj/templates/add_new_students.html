@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Add Students{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row">
+
+                <!-- LOGO -->
+                <div class="col-12 col-sm-5 col-lg-2">
+                    <div class="card">
+                        <div class="card-body text-center">
+                            <img class="img-fluid" src="{% static 'assets/img/logo.png' %}" width="100px">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FORM -->
+                <div class="col-12 col-sm-7 col-lg-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>ADD STUDENT RECORD</h4>
+                        </div>
+
+                        <div class="card-body">
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert alert-success alert-dismissible fade show">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <form method="post" action="{% url 'add_student' %}">
+                                {% csrf_token %}
+
+                                <div class="row">
+
+                                    <!-- FIRST NAME -->
+                                    <div class="form-group col-md-6">
+                                        <label>First Name</label>
+                                        <input type="text" name="firstname" class="form-control" required>
+                                    </div>
+
+                                    <!-- LAST NAME -->
+                                    <div class="form-group col-md-6">
+                                        <label>Last Name</label>
+                                        <input type="text" name="lastname" class="form-control" required>
+                                    </div>
+                                        <div class="form-group col-md-6">
+                                                <label>Matric Number</label>
+                                                <input type="text" name="matric_no" class="form-control" required>
+                                            </div>
+                                      <!-- GENDER -->
+                                <!-- LEVEL -->
+                                    <!-- LEVEL -->
+                    <div class="form-group col-md-6">
+                        <label>Level</label>
+                        <select name="level" class="form-control">
+                            <option value="">Select Level</option>
+                            <option value="100">100</option>
+                            <option value="200">200</option>
+                            <option value="300">300</option>
+                            <option value="400">400</option>
+                            <option value="500">500</option>
+                            <option value="600">600</option>
+                        </select>
+                    </div>
+
+
+                                </div>
+
+                                <div class="row">
+
+                                    <!-- GENDER -->
+                                    <div class="form-group col-md-6">
+                                        <label>Gender</label>
+                                        <select name="gender" class="form-control" required>
+                                            <option value="">Select Gender</option>
+                                            <option value="MALE">Male</option>
+                                            <option value="FEMALE">Female</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- DEPARTMENT -->
+                                    <div class="form-group">
+                                                                <label for="department">Department:</label>
+                                                                <select id="department" name="department" class="form-control">
+                                                                    <option value="department">Select a department</option>
+                                                                    <!-- Add your department options here -->
+
+                                                                    <option value="Political Science and Diplomacy">Political Science and Diplomacy</option>
+                                <option value="Economics">Economics</option>
+                                <option value="Industrial Chemistry">Industrial Chemistry</option>
+                                <option value="Physics with Electronics">Physics with Electronics</option>
+                                <option value="Applied Microbiology">Applied Microbiology</option>
+                                <option value="Philosophy">Philosophy</option>
+                                <option value="Computer Science">Computer Science</option>
+                                <option value="Mass Communication">Mass Communication</option>
+                                <option value="English and Literary Studies">English and Literary Studies</option>
+                                <option value="History and International Relations">History and International Relations</option>
+                                <option value="Marketing and Advertising">Marketing and Advertising</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Theology">Theology</option>
+                                <option value="English Education">English Education</option>
+                                <option value="Economics Education">Economics Education</option>
+                                <option value="Chemistry Education">Chemistry Education</option>
+                                <option value="Physics Education">Physics Education</option>
+                                <option value="Educational Management">Educational Management</option>
+                                <option value="Business Administration">Business Administration</option>
+                                <option value="Entrepreneurial Studies">Entrepreneurial Studies</option>
+                                <option value="Peace And Conflict Studies">Peace And Conflict Studies</option>
+                                <option value="B.Eng Computer Engineering">B.Eng Computer Engineering</option>
+                                <option value="B.Eng Electrical and Electronic Engineering">B.Eng Electrical and Electronic Engineering</option>
+                                <option value="Law">Law</option>
+                                <option value="SOFTWARE ENGINEERING">SOFTWARE ENGINEERING</option>
+                                <option value="Nursing">Nursing</option>
+                                <option value="Pharmacy">Pharmacy</option>
+                                <option value="Medical Laboratory Sciences">Medical Laboratory Sciences</option>
+                                <option value="Sacred Theology">Sacred Theology</option>
+                                <option value="Computer science Education">Computer science Education</option>
+                                <option value="Medicine and Surgery">Medicine and Surgery</option>
+                                <option value="Religious Education">Religious Education</option>
+                                <option value="Public Administration">Public Administration</option>
+                                                                </select>
+                                                            </div>
+
+                                </div>
+
+                                <div class="form-group text-right">
+                                    <button type="submit" class="btn btn-primary">
+                                        Save Student
+                                    </button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Admin register </title>
+  <!-- General CSS Files -->
+   {% load static %}
+
+  <link rel="stylesheet" href="{% static 'assets/bundles/bootstrap-social/bootstrap-social.css' %}">
+
+  
+  <link rel="stylesheet" href="{% static 'assets/bundles/fontawesome/css/all.css'%}">
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href=" {% static 'assets/css/app.min.css' %}">
+    <!-- Template CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/components.css'%}">
+    <!-- Custom style CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/custom.css'%}">
+    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
+
+</head>
+
+<body>
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+          <div class="row">
+            <div class="col-12 col-md-10 offset-lg-3 col-lg-6">
+              <a href="index.html">
+                <img alt="image" src="{% static 'assets/img/logo.png' %}" class="header-logo  offset-lg-4" style="width: 70px;" />
+              </a>
+              <div class="login-brand">
+                vuna attendance system
+              </div>
+            </div>
+          </div>
+        <div class="row">
+          <div class="col-12 col-md-10 col-lg-5 pb-20">
+            <div class="card card-primary">
+              <div class="card-header">
+                <h4>Admin Register</h4>
+              </div>
+              <div class="card-body">
+                {% if messages %}
+                <ul>
+                  {% for message in messages %}
+                  <li>{{ message }}</li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+                <form method="POST">
+                  {% csrf_token %}
+                  {{ form.as_p }}
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg col-md-6 btn-block">Register</button>
+                  </div>
+                </form>
+                <div class="mb-4 text-muted text-center p-b-20">
+                  Already Registered? <a href="{% url 'admin_login' %}">Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <!-- General JS Scripts -->
+  <script src="{% static 'assets/js/app.min.js' %} "></script>
+  <!-- JS Libraies -->
+  <script src="{% static 'assets/bundles/apexcharts/apexcharts.min.js' %} "></script>
+  <!-- Page Specific JS File -->
+  <script src="{% static 'assets/js/page/index.js' %} "></script>
+  <!-- Template JS File -->
+  <script src="{% static 'assets/js/scripts.js' %} "></script>
+  <!-- Custom JS File -->
+  <script src="{% static ' assets/js/custom.js' %} "></script>
+</body>
+
+
+
+<!-- auth-login.html  21 Nov 2019 03:49:32 GMT -->
+</html>

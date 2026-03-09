@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Delete Students{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <section class="section">
+        <div class="section-body">
+            <div class="row justify-content-center">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Delete Students by Matric Number</h4>
+                        </div>
+
+                        <div class="card-body">
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <div class="alert
+                                        {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}
+                                        alert-dismissible fade show">
+                                        {{ message }}
+                                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+
+                            <form method="post" action="{% url 'delete_students' %}">
+                                {% csrf_token %}
+
+                                <!-- LEVEL -->
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <select name="level" class="form-control">
+                                        <option value="">Select Level</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
+                                        <option value="300">300</option>
+                                        <option value="400">400</option>
+                                        <option value="500">500</option>
+                                        <option value="600">600</option>
+                                    </select>
+                                </div>
+
+                                <!-- Matric Numbers -->
+                                <div class="form-group">
+                                    <label>Matric Numbers (comma-separated)</label>
+                                    <input type="text" name="matric_numbers" class="form-control" placeholder="e.g., MAT001, MAT002, MAT003">
+                                </div>
+
+                                <div class="form-group text-right">
+                                    <button type="submit" class="btn btn-danger">Delete Students</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!DOCTYPE html>
+
+<!-- contact.html  21 Nov 2019 04:05:04 GMT -->
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <title>home</title>
+  <!-- General CSS Files -->
+  <!-- General CSS Files -->
+  <link rel="stylesheet" href="{% static 'assets/css/app.min.css' %}">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/components.css' %}">
+  <!-- Custom style CSS -->
+  <link rel="stylesheet" href="{% static 'assets/css/custom.css' %}">
+  <link rel='shortcut icon' type='image/x-icon' href="{% static 'assets/img/logo.png' %}" />
+</head>
+
+<body>
+  <div class="loader"></div>
+  <div id="app">
+    <section class="section">
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-12 col-md-10 offset-md-1 col-lg-10 ">
+            <a href="index.html">
+              <img alt="image" src="{% static 'assets/img/logo.png' %}" class="header-logo width-25 offset-lg-5" style="width: 70px;" />
+            <div class="login-brand">
+              vuna attendance system 
+            </div>
+            <div class="card card-success">
+              <div class="row m-0">
+                <div class="col-12 col-md-12 col-lg-5 p-0">
+                  <div class="card-header text-center">
+                    <h4>login</h4>
+                  </div>
+                  <div class="card-body">
+                    <form method="POST">
+                      <div class="form-group floating-addon">
+                        <label>Name</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="far fa-user"></i>
+                            </div>
+                          </div>
+                          <input id="name" type="text" class="form-control" name="name" autofocus placeholder="Name">
+                        </div>
+                      </div>
+                      <div class="form-group floating-addon">
+                        <label>Email</label>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">
+                              <i class="fas fa-envelope"></i>
+                            </div>
+                          </div>
+                          <input id="email" type="email" class="form-control" name="email" placeholder="Email">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label>Message</label>
+                        <textarea class="form-control" placeholder="Type your message" data-height="150"></textarea>
+                      </div>
+                      <div class="form-group text-right">
+                        <button type="submit" class="btn btn-round btn-lg btn-primary">
+                          Send Message
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+
+
+                <div class="col-12 col-md-12 col-lg-7 p-0">
+                  
+                    <div class="card">
+                      <div class="card-header">
+                        
+                      </div>
+                      <div class="card-body">
+                        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                          <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <img class="d-block w-100" src="{% static 'assets/img/blog/img01.png' %}" alt="First slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="{% static 'assets/img/blog/img07.png' %}" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="{% static 'assets/img/blog/img08.png' %}" alt="Third slide">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                 
+                  
+                  
+                </div>
+              </div>
+            </div>
+            <div class="simple-footer">
+              Copyright &copy; COMP.SCI INNOVATION LABS
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <!-- General JS Scripts -->
+<script src="{% static 'assets/js/app.min.js' %}"></script>
+<!-- JS Libraries -->
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyB55Np3_WsZwUQ9NS7DP-HnneleZLYZDNw&amp;sensor=true"></script>
+<script src="{% static 'assets/bundles/gmaps.js' %}"></script>
+<!-- Page Specific JS File -->
+<script src="{% static 'assets/js/page/contact.js' %}"></script>
+<!-- Template JS File -->
+<script src="{% static 'assets/js/scripts.js' %}"></script>
+<!-- Custom JS File -->
+<script src="{% static 'assets/js/custom.js' %}"></script>
+</body>
+
+
+<!-- contact.html  21 Nov 2019 04:05:05 GMT -->
+</html>
